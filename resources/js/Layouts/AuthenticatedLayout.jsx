@@ -28,7 +28,8 @@ import {
     UserCircle,
     ChevronLeft,
     ChevronRight,
-    Store
+    Store,
+    MapPin // Tambahkan icon MapPin
 } from 'lucide-react';
 
 export default function AuthenticatedLayout({ children }) {
@@ -74,6 +75,7 @@ export default function AuthenticatedLayout({ children }) {
             { name: 'Tutup Kas', href: route('cash-closing.index'), icon: Receipt, roles: ['admin'] },
             { name: 'Laporan', href: route('reports.index'), icon: TrendingUp, roles: ['admin'] },
             { name: 'Pengguna', href: route('users.index'), icon: Users, roles: ['admin'] },
+            { name: 'Lokasi Pop-Up', href: route('store-locations.index'), icon: MapPin, roles: ['admin'] }, // TAMBAHKAN INI
             { name: 'Profil Toko', href: route('store-profile.index'), icon: Store, roles: ['admin'] },
         ];
 
@@ -120,6 +122,9 @@ export default function AuthenticatedLayout({ children }) {
         }
         if (href === route('store-profile.index')) {
             return currentPath === '/store-profile' || currentPath.startsWith('/store-profile/');
+        }
+        if (href === route('store-locations.index')) { // TAMBAHKAN INI
+            return currentPath === '/store-locations' || currentPath.startsWith('/store-locations/');
         }
         if (href === '/profile') {
             return currentPath === '/profile';

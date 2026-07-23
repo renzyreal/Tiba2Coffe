@@ -10,12 +10,17 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\CashClosingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\StoreProfileController; // TAMBAHKAN INI
+use App\Http\Controllers\StoreProfileController;
+use App\Http\Controllers\StoreLocationController;
 use Illuminate\Support\Facades\Route;
 
+// Public Routes
 Route::get('/', [LandingPageController::class, 'index'])->name('home');
 Route::get('/landing', [LandingPageController::class, 'index'])->name('landing');
 Route::get('/menu', [LandingPageController::class, 'menu'])->name('menu');
+
+// Public API
+Route::get('/api/store-locations', [StoreLocationController::class, 'getLocations']);
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -52,14 +57,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/reports/export', [ReportController::class, 'export'])->name('reports.export');
     Route::get('/reports/chart-data', [ReportController::class, 'chartData'])->name('reports.chart-data');
     
-    // Custom routes (harus sebelum resource)
+    // Cash Closing
     Route::get('/cash-closing/summary', [CashClosingController::class, 'summary'])->name('cash-closing.summary');
     Route::get('/cash-closing/check/{date}', [CashClosingController::class, 'check'])->name('cash-closing.check');
     Route::get('/cash-closing/dashboard-summary', [CashClosingController::class, 'dashboardSummary'])->name('cash-closing.dashboard-summary');
     Route::get('/cash-closing/history', [CashClosingController::class, 'history'])->name('cash-closing.history');
     Route::get('/cash-closing/export/csv', [CashClosingController::class, 'export'])->name('cash-closing.export');
-    
-    // Resource routes (akan handle index, store, show, update, destroy)
     Route::resource('cash-closing', CashClosingController::class);
     Route::get('/cash-closing/{cashClosing}/print', [CashClosingController::class, 'print'])->name('cash-closing.print');
     
@@ -77,7 +80,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Store Profile
     Route::get('/store-profile', [StoreProfileController::class, 'index'])->name('store-profile.index');
     Route::put('/store-profile/{id}', [StoreProfileController::class, 'update'])->name('store-profile.update');
-
+    
+    // Store Locations (Hanya auth, tanpa role admin tambahan karena sudah dicek di controller)
+    Route::get('/store-locations', [StoreLocationController::class, 'index'])->name('store-locations.index');
+    Route::post('/store-locations', [StoreLocationController::class, 'store'])->name('store-locations.store');
+    Route::put('/store-locations/{storeLocation}', [StoreLocationController::class, 'update'])->name('store-locations.update');
+    Route::delete('/store-locations/{storeLocation}', [StoreLocationController::class, 'destroy'])->name('store-locations.destroy');
+    Route::put('/store-locations/{storeLocation}/status', [StoreLocationController::class, 'updateStatus'])->name('store-locations.status');
+    Route::post('/store-locations/reorder', [StoreLocationController::class, 'reorder'])->name('store-locations.reorder');
 });
 
 require __DIR__.'/auth.php';

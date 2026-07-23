@@ -41,7 +41,6 @@ export default function LandingPage({ allProducts, featuredProducts, categories,
                 />
                 
                 <RadarSection 
-                    storeAddress={storeAddress} 
                     storeWhatsapp={storeWhatsapp} 
                 />
                 

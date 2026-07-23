@@ -8,7 +8,7 @@ export default function ManifestoSection({ storeName }) {
             </div>
             <div className="max-w-4xl mx-auto px-8 text-center relative z-10">
                 <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tighter mb-8">
-                    MANIFESTO JALANAN:<br />KICK OUT THE FANCY STUFF.
+                    MANIFESTASI JALANAN:<br />KICK OUT THE FANCY STUFF.
                 </h2>
                 <p className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-6">
                     Kami males sama kafe estetik yang jualan tempat mahal tapi rasa kopinya hambar. Di <strong className="text-red-400">{storeName}</strong>, fokus kami cuma satu: menyajikan ekstraksi kafein mentah, kuat, jujur, langsung di aspal kota. 

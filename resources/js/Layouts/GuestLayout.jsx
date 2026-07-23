@@ -57,7 +57,7 @@ export default function GuestLayout({ children }) {
                                 MENU
                             </button>
                             <button onClick={() => scrollToSection('about')} className="text-gray-600 hover:text-red-600 transition cursor-pointer">
-                                MANIFESTO
+                                MANIFESTASI
                             </button>
                             <button onClick={() => scrollToSection('contact')} className="text-gray-600 hover:text-red-600 transition cursor-pointer">
                                 KONTAK
@@ -98,7 +98,7 @@ export default function GuestLayout({ children }) {
                             scrollToSection('about');
                             setIsMenuOpen(false);
                         }} className="block w-full text-left py-2 px-3 rounded-lg text-gray-600 hover:text-red-600 hover:bg-gray-50">
-                            MANIFESTO
+                            MANIFESTASI
                         </button>
                         <button onClick={() => {
                             scrollToSection('contact');
@@ -121,7 +121,7 @@ export default function GuestLayout({ children }) {
             <footer className="bg-black text-white mt-auto">
                 {/* Footer Atas */}
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {/* Brand Column */}
                         <div className="col-span-1">
                             <div className="flex items-center gap-2 mb-4">
@@ -162,24 +162,16 @@ export default function GuestLayout({ children }) {
                         </div>
 
                         <div>
-                            <h4 className="text-xs font-bold tracking-wider text-gray-500 mb-4">TENTANG</h4>
-                            <ul className="space-y-2 text-sm">
-                                <li><a href="#" className="text-gray-400 hover:text-red-500 transition">Tentang Kami</a></li>
-                                <li><a href="#" className="text-gray-400 hover:text-red-500 transition">Karir</a></li>
-                                <li><a href="#" className="text-gray-400 hover:text-red-500 transition">Blog</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 className="text-xs font-bold tracking-wider text-gray-500 mb-4">LAYANAN</h4>
-                            <ul className="space-y-2 text-sm">
+                            <h4 className="text-xs font-bold tracking-wider text-gray-500 mb-4 ml-10">LAYANAN</h4>
+                            <ul className="space-y-2 text-sm ml-10">
                                 <li><a href="#" className="text-gray-400 hover:text-red-500 transition">Support</a></li>
                                 <li><a href="#" className="text-gray-400 hover:text-red-500 transition">Dokumentasi</a></li>
                                 <li><a href="#" className="text-gray-400 hover:text-red-500 transition">API</a></li>
                             </ul>
                         </div>
                         <div>
-                            <h4 className="text-xs font-bold tracking-wider text-gray-500 mb-4">KONTAK</h4>
-                            <ul className="space-y-2 text-sm text-gray-400">
+                            <h4 className="text-xs font-bold tracking-wider text-gray-500 mb-4 ml-10">KONTAK</h4>
+                            <ul className="space-y-2 text-sm text-gray-400 ml-10">
                                 <li className="flex items-center gap-2">📞 {storePhone}</li>
                                 <li className="flex items-center gap-2">✉️ {storeEmail}</li>
                                 <li className="flex items-center gap-2">📍 {storeAddress}</li>
